@@ -1,0 +1,57 @@
+# Default values for omnitrix-chart.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+environment: local
+
+replicaCount: 1
+
+image:
+  repository: localhost/gpe-omnitrix
+  pullPolicy: IfNotPresent
+  tag: ""
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+
+securityContext: {}
+
+service:
+  type: ClusterIP
+  port: 80
+  servicePort: 8081
+
+ingress:
+  enabled: true
+  annotations: {}
+  #    nginx.ingress.kubernetes.io/rewrite-target: /
+  hosts:
+    - host: faas.local
+      paths:
+        - path: /omnitrix/
+          pathType: Prefix
+
+resources: {}
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 4
+  targetCPUUtilizationPercentage: 60
+  targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
