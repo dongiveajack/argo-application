@@ -7,7 +7,7 @@ environment: local
 replicaCount: 1
 
 image:
-  repository: localhost/gpe-omnitrix
+  repository: gpe-omnitrix
   pullPolicy: IfNotPresent
   tag: ""
 
